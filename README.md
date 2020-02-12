@@ -17,9 +17,8 @@ Example for how to load UMD module in browser:
 ### Example
 
 ```javascript
-ajax('http://url-requext.ext', {
+ajax('http://requexturl.ext', {
     method: 'GET',
-    headers: {'Authorization': 'Basic abc'},
     success: function (response) {
         console.log(response);
     },
@@ -29,7 +28,7 @@ ajax('http://url-requext.ext', {
     fail: function (code, message) {
         console.warn(code, message);
     },
-    error: function (xhr, code, error) {
+    error: function (code, error) {
         console.error(code, error);
     }
 });

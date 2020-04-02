@@ -22,28 +22,33 @@
  * @return {void}
  */
 function ajax(url, options) {
-    let method = options.method !== undefined ? options.method.toUpperCase() : 'GET',
-        type = options.type !== undefined ? options.type : '',
-        timeout = options.timeout !== undefined ? options.timeout : 0,
-        data = options.data !== undefined ? options.data : null,
-        headers = options.headers !== undefined ? options.headers : null,
-        async = options.async !== undefined ? options.async : true,
+    let method = typeof options.method !== 'undefined' ? options.method.toUpperCase() : 'GET',
+        type = typeof options.type !== 'undefined' ? options.type : '',
+        timeout = typeof options.timeout !== 'undefined' ? options.timeout : 0,
+        data = typeof options.data !== 'undefined' ? options.data : null,
+        headers = typeof options.headers !== 'undefined' ? options.headers : null,
+        async = typeof options.async !== 'undefined' ? options.async : true,
         queryString = null,
         requestHeaders = {'X-Requested-With': 'XMLHttpRequest'};
 
     if (data) {
-        if (typeof data == 'object') {
+        if (typeof data === 'object') {
             let result = [];
             for (let d in data) {
-                if (data.hasOwnProperty(d)) {
-                    result.push(encodeURI(d) + '=' + encodeURIComponent(data[d]));
-                }
+                result.push(encodeURI(d) + '=' + encodeURIComponent(data[d]));
             }
-            if (result) {
+            if (result.length) {
                 queryString = result.join('&');
             }
         } else {
             queryString = data.toString();
+        }
+    }
+    if (typeof headers === 'object') {
+        for (let header in headers) {
+            if (headers[header]) {
+                requestHeaders[header] = headers[header];
+            }
         }
     }
     if (method === 'POST') {
@@ -51,13 +56,6 @@ function ajax(url, options) {
     } else {
         if (queryString) {
             url = url + '?' + queryString;
-        }
-    }
-    if (headers) {
-        for (let header in headers) {
-            if (headers.hasOwnProperty(header)) {
-                requestHeaders[header] = headers[header];
-            }
         }
     }
 
@@ -73,7 +71,7 @@ function ajax(url, options) {
          * 3 - LOADING - processing request, response is loading (a data packed is received)
          * 4 - DONE - request finished and response is ready, complete
          */
-        if (options.getState !== undefined) {
+        if (typeof options.getState !== 'undefined') {
             options.getState(xhr.readyState);
         }
     };
@@ -91,22 +89,22 @@ function ajax(url, options) {
          * @see https://www.w3schools.com/tags/ref_httpmessages.asp
          */
         if (xhr.status >= 200 && xhr.status <= 299) {
-            if (options.success !== undefined) {
+            if (typeof options.success !== 'undefined') {
                 options.success(xhr.response);
             }
         } else {
-            if (options.fail !== undefined) {
+            if (typeof options.fail !== 'undefined') {
                 options.fail(xhr.status, xhr.statusText);
             }
         }
     };
     xhr.onprogress = function (ev) {
-        if  (options.progress !== undefined) {
+        if  (typeof options.progress !== 'undefined') {
             options.progress(ev);
         }
     };
     xhr.onerror = function () {
-        if (options.error !== undefined) {
+        if (typeof options.error !== 'undefined') {
             options.error(xhr.status, xhr.statusText);
         }
     };

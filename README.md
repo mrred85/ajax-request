@@ -1,6 +1,6 @@
 # Ajax Request
 
-Create HTMLHTTPRequest using `ajax(url, options)` function similar to **$.ajax** in jQuery.
+Create XMLHttpRequest using `ajax(url, options)` function similar to **$.ajax** in jQuery.
 
 ## What’s XMLHttpRequest?
 XMLHttpRequest (or shortly, XHR) is an object which is used to interact with servers. It allows to us to retrieve data from URL without having to do a full page refresh. The most common usage of this object is in AJAX programming. XMLHttpRequest can be used to retrieve any type of data, not just XML.

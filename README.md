@@ -9,7 +9,7 @@ XMLHttpRequest (or shortly, XHR) is an object which is used to interact with ser
 
 ### Direct install
 
-Example for how to load UMD module in browser:
+Example for how to load the script in browser:
 ```html
 <script type="text/javascript" src="/path/to/ajax.js"></script>
 ```

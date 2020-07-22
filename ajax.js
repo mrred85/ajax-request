@@ -1,15 +1,15 @@
 /**
- * Ajax Request
+ * Ajax Request v1.1
  *
  * @function
  * @param {string} url
  * @param {Object=} options
- * @param {string=} [options.method=GET] options.method - GET, POST, PUT, PATCH, DELETE
- * @param {string=} [options.type='text'] options.type - text, arraybuffer, blob, document, json
- * @param {number=} [options.timeout=0] options.timeout - in milliseconds
- * @param {string=|Object=} options.data - The data to be sent.
- * @param {boolean=} [options.async=true] options.async
- * @param {Object=} options.headers - Adds HTTP headers to the request.
+ * @param {string} [options.method=GET] options.method - GET, POST, PUT, PATCH, DELETE
+ * @param {string} [options.type='text'] options.type - text, arraybuffer, blob, document, json
+ * @param {number} [options.timeout=0] options.timeout - in milliseconds
+ * @param {string|Object} [options.data] - The data to be sent.
+ * @param {boolean} [options.async=true] options.async
+ * @param {Object} [options.headers] - Adds HTTP headers to the request.
  * @param {function(number)=} options.getState - Get readyState property value.
  * @param {function(ProgressEvent<EventTarget>)=} options.progress - The function is called periodically
  *        with information when an XMLHttpRequest before success completely.
